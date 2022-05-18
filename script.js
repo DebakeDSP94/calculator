@@ -50,8 +50,10 @@ function handleOperators(input) {
 	) {
 		operator = input.innerText;
 	} else if (input.classList.contains('percent') && a) {
+		operator = '%';
 		percent();
 	} else if (input.classList.contains('pos-neg') && a) {
+		operator = '-';
 		posNeg();
 	} else if (input.classList.contains('opr') && operator && a && b) {
 		operate();
