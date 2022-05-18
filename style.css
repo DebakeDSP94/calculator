@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+body {
+	background: url('/images/desk.jpg') no-repeat center center/cover;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	overflow: hidden;
+	margin: 0;
+}
+
+.container {
+	background-color: rgb(30, 30, 30);
+	height: 40rem;
+	width: 24rem;
+	border-radius: 4%;
+	box-shadow: 15px 10px 4px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+}
+
+.calculator {
+	display: flex;
+	flex-direction: column;
+	height: 30rem;
+	width: 22rem;
+}
+
+.calc-screen {
+	margin: 1rem;
+	margin-top: 2rem;
+	height: 8rem;
+	background-color: rgb(120, 120, 120);
+}
+
+.screen-history {
+	height: 6rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: right;
+	margin-right: 15px;
+	font-size: 1.2rem;
+}
+
+.screen-data {
+	margin-right: 5px;
+	font-size: 1.5rem;
+	height: 2rem;
+}
+
+.screen-history,
+.screen-data {
+	text-align: right;
+}
+
+.calculator-body {
+	display: flex;
+	flex-direction: column;
+	align-items: top;
+	justify-content: top;
+}
+
+.top-btns {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	height: 4rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.clear,
+.del,
+.percent,
+.pos-neg {
+	font-size: 2rem;
+	height: 5rem;
+	width: 5rem;
+	border-radius: 20%;
+	cursor: pointer;
+}
+
+.clear {
+	background-color: green;
+}
+
+.clear:hover {
+	background-color: darkgreen;
+	color: aliceblue;
+}
+
+.del {
+	background-color: rgb(195, 36, 36);
+}
+
+.percent {
+	background-color: rgb(17, 17, 204);
+}
+
+.percent:hover {
+	background-color: darkblue;
+	color: aliceblue;
+}
+
+.pos-neg {
+	background-color: rgb(224, 224, 17);
+}
+
+.pos-neg:hover {
+	background-color: darkgoldenrod;
+}
+
+.del:hover {
+	background-color: darkred;
+	color: aliceblue;
+}
+
+.calc-btns {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+}
+
+.calc {
+	width: 5rem;
+	height: 5rem;
+	margin-top: 0.2rem;
+	border-radius: 20%;
+	font-size: 2rem;
+	cursor: pointer;
+}
+
+.calc:hover {
+	background-color: rgb(88, 88, 97);
+	color: aliceblue;
+}
+
+.equals {
+	background-color: rgb(161, 113, 209);
+}
+
+.add,
+.subtract,
+.multiply,
+.divide {
+	background-color: orange;
+}
