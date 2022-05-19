@@ -6,6 +6,7 @@
 body {
 	background: url('/images/desk.jpg') no-repeat center center/cover;
 	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -42,20 +43,20 @@ body {
 
 .screen-history {
 	height: 6rem;
+	max-width: 22rem;
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: right;
-	margin-right: 15px;
-	font-size: 1.2rem;
+	word-break: break-all;
+	justify-content: left;
+	font-size: 1.5rem;
 }
 
 .screen-data {
 	margin-right: 5px;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	height: 2rem;
 }
 
-.screen-history,
 .screen-data {
 	text-align: right;
 }
@@ -72,20 +73,24 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-evenly;
-	height: 4rem;
+	height: 5rem;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
 
 .clear,
 .del,
-.percent,
-.pos-neg {
-	font-size: 2rem;
+.percent-btn,
+.pos-neg-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	height: 5rem;
 	width: 5rem;
 	border-radius: 20%;
 	cursor: pointer;
+	font-size: 2.5rem;
 }
 
 .clear {
@@ -101,20 +106,20 @@ body {
 	background-color: rgb(195, 36, 36);
 }
 
-.percent {
+.percent-btn {
 	background-color: rgb(17, 17, 204);
 }
 
-.percent:hover {
+.percent-btn:hover {
 	background-color: darkblue;
 	color: aliceblue;
 }
 
-.pos-neg {
+.pos-neg-btn {
 	background-color: rgb(224, 224, 17);
 }
 
-.pos-neg:hover {
+.pos-neg-btn:hover {
 	background-color: darkgoldenrod;
 }
 
@@ -132,26 +137,42 @@ body {
 }
 
 .calc {
-	width: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	height: 5rem;
-	margin-top: 0.2rem;
+	width: 5rem;
 	border-radius: 20%;
-	font-size: 2rem;
 	cursor: pointer;
+	font-size: 2.5rem;
 }
 
-.calc:hover {
+.num:hover {
 	background-color: rgb(88, 88, 97);
 	color: aliceblue;
 }
 
-.equals {
+.equals-btn {
 	background-color: rgb(161, 113, 209);
 }
 
-.add,
-.subtract,
-.multiply,
-.divide {
+.equals-btn:hover {
+	background-color: rgb(88, 88, 97);
+	color: aliceblue;
+}
+
+.add-btn,
+.subtract-btn,
+.multiply-btn,
+.divide-btn {
 	background-color: orange;
+}
+
+.add-btn:hover,
+.subtract-btn:hover,
+.multiply-btn:hover,
+.divide-btn:hover {
+	background-color: rgb(88, 88, 97);
+	color: aliceblue;
 }

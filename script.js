@@ -2,22 +2,32 @@ const screenHistory = document.getElementById('screen-history');
 const screenData = document.getElementById('screen-data');
 const clearBtn = document.getElementById('clear');
 const delBtn = document.getElementById('del');
-const calcBtns = document.querySelectorAll('.calc');
+const calcBtns = document.querySelectorAll('.num');
+const oprBtns = document.querySelectorAll('.opr');
+const numBtns = document.querySelectorAll('.num');
+const pointBtn = document.querySelector('.point');
 
 let a = '';
 let b = '';
 let result = 0;
 let operator = '';
 
-calcBtns.forEach((button) =>
+numBtns.forEach((button) =>
 	button.addEventListener('click', (e) => handleInput(e.target))
 );
+
+oprBtns.forEach((button) =>
+	button.addEventListener('click', (e) => handleInput(e.target))
+);
+
+pointBtn.addEventListener('click', (e) => handleInput(e.target));
 
 clearBtn.addEventListener('click', () => clearScreen());
 
 delBtn.addEventListener('click', () => backSpace());
 
 function handleInput(input) {
+	console.log(input);
 	if (input.classList.contains('num')) {
 		handleNums(input);
 	} else if (input.classList.contains('point')) {
@@ -26,10 +36,9 @@ function handleInput(input) {
 		handleOperators(input);
 	} else if (input.classList.contains('equals') && a && operator && b) {
 		operate();
-	} else {
-		return;
 	}
 	updateScreen();
+	return;
 }
 
 function handleNums(input) {
@@ -48,7 +57,7 @@ function handleOperators(input) {
 		!input.classList.contains('percent') &&
 		!input.classList.contains('pos-neg')
 	) {
-		operator = input.innerText;
+		setOperators(input);
 	} else if (input.classList.contains('percent') && a) {
 		operator = '%';
 		percent();
@@ -57,7 +66,7 @@ function handleOperators(input) {
 		posNeg();
 	} else if (input.classList.contains('opr') && operator && a && b) {
 		operate();
-		operator = input.innerText;
+		setOperators(input);
 	}
 
 	return;
@@ -99,6 +108,19 @@ function operate() {
 		alert('dividing by zero is impossible...duh!');
 	}
 	return a, b, result;
+}
+
+function setOperators(input) {
+	if (input.classList.contains('add') && a) {
+		operator = '+';
+	} else if (input.classList.contains('subtract') && a) {
+		operator = '-';
+	} else if (input.classList.contains('multiply') && a) {
+		operator = '*';
+	} else if (input.classList.contains('divide') && a) {
+		operator = '/';
+	}
+	return;
 }
 
 function add() {
