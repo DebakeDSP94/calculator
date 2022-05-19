@@ -148,7 +148,8 @@ body {
 	font-size: 2.5rem;
 }
 
-.num:hover {
+.num:hover,
+.point-btn:hover {
 	background-color: rgb(88, 88, 97);
 	color: aliceblue;
 }
