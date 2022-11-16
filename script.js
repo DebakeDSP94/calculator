@@ -2,32 +2,32 @@ const screenHistory = document.getElementById('screen-history');
 const screenData = document.getElementById('screen-data');
 const clearBtn = document.getElementById('clear');
 const delBtn = document.getElementById('del');
-const calcBtns = document.querySelectorAll('.num');
+const posNegBtn = document.querySelector('.pos-neg');
 const oprBtns = document.querySelectorAll('.opr');
 const numBtns = document.querySelectorAll('.num');
 const pointBtn = document.querySelector('.point');
+const equalsBtn = document.querySelector('.equals');
 
 let a = '';
 let b = '';
 let result = 0;
 let operator = '';
+let equals = false;
 
 numBtns.forEach((button) =>
-	button.addEventListener('click', (e) => handleInput(e.target))
+	button.addEventListener('click', (e) => checkForEquals(e.target))
 );
 
 oprBtns.forEach((button) =>
-	button.addEventListener('click', (e) => handleInput(e.target))
+	button.addEventListener('click', (e) => checkForEquals(e.target))
 );
-
-pointBtn.addEventListener('click', (e) => handleInput(e.target));
-
+pointBtn.addEventListener('click', (e) => checkForEquals(e.target));
+equalsBtn.addEventListener('click', (e) => checkForEquals(e.target));
 clearBtn.addEventListener('click', () => clearScreen());
-
 delBtn.addEventListener('click', () => backSpace());
+posNegBtn.addEventListener('click', () => posNeg());
 
 function handleInput(input) {
-	console.log(input);
 	if (input.classList.contains('num')) {
 		handleNums(input);
 	} else if (input.classList.contains('point')) {
@@ -35,10 +35,24 @@ function handleInput(input) {
 	} else if (input.classList.contains('opr')) {
 		handleOperators(input);
 	} else if (input.classList.contains('equals') && a && operator && b) {
+		equals = true;
 		operate();
 	}
 	updateScreen();
 	return;
+}
+
+function checkForEquals(input) {
+	if (equals === false) {
+		handleInput(input);
+	} else if (equals === false || input.classList.contains('opr')) {
+		equals = false;
+		handleInput(input);
+	} else {
+		clearScreen();
+		equals = false;
+		handleInput(input);
+	}
 }
 
 function handleNums(input) {
@@ -54,21 +68,16 @@ function handleOperators(input) {
 	if (
 		input.classList.contains('opr') &&
 		!operator &&
-		!input.classList.contains('percent') &&
-		!input.classList.contains('pos-neg')
+		!input.classList.contains('percent')
 	) {
 		setOperators(input);
 	} else if (input.classList.contains('percent') && a) {
 		operator = '%';
 		percent();
-	} else if (input.classList.contains('pos-neg') && a) {
-		operator = '-';
-		posNeg();
 	} else if (input.classList.contains('opr') && operator && a && b) {
 		operate();
 		setOperators(input);
 	}
-
 	return;
 }
 
@@ -150,8 +159,10 @@ function percent() {
 }
 
 function posNeg() {
-	result = parseFloat(a) * -1;
-	showResults();
+	if (a && !b) {
+		result = parseFloat(a) * -1;
+		showResults();
+	}
 }
 
 function roundResult() {
@@ -176,6 +187,7 @@ function clearScreen() {
 	operator = '';
 	screenData.innerText = '';
 	screenHistory.innerText = '';
+	equals = false;
 }
 
 function backSpace() {
